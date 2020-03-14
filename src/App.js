@@ -1,12 +1,15 @@
 import React, { Component } from "react";
-import Navbar from "./component/Navbar";
-import List from "./component/List";
+import Home from "./component/Home";
+import Login from "./Login";
+import Detail from "./component/Detail";
+import { Route, Switch } from "react-router-dom";
+import Routes from "./router/index";
+
 class App extends Component {
   render() {
     return (
       <>
-        <Navbar />
-        <List />
+        <Routes />
       </>
     );
   }

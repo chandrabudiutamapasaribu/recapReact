@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-
+import { Redirect } from "react-router-dom";
 class Login extends React.Component {
   constructor() {
     super();
@@ -9,6 +9,8 @@ class Login extends React.Component {
     };
   }
   componentDidMount() {
+    const id = this.props;
+    console.log(id);
     axios
       .get(
         "https://api.rss2json.com/v1/api.json?rss_url=http%3A%2F%2Frss.detik.com%2F"
@@ -19,6 +21,11 @@ class Login extends React.Component {
         });
       });
   }
+
+  handleLogout = () => {
+    localStorage.removeItem("token");
+    this.props.history.push("/");
+  };
 
   render() {
     return (
@@ -40,6 +47,11 @@ class Login extends React.Component {
               </div>
               <div className="container  " align="center">
                 <a href={param.link}>Page asli</a>
+              </div>
+              <div className="container  " align="center">
+                <>
+                  <button onClick={this.handleLogout}>Logout</button>
+                </>
               </div>
               <hr />
             </>
